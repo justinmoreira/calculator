@@ -1,41 +1,25 @@
-//let temp = '';
 let a = '';
 let b = '';
 let operator = '';
 let resetNext = false;
-//let previousResult;
 
 const numbers = document.querySelectorAll('.num');
 const operations = document.querySelectorAll('.oper');
 const display = document.querySelector('.results');
 const equal = document.querySelector('.equal');
+const clear = document.querySelector('.clear');
+const del = document.querySelector('.delete');
+const dec = document.querySelector('.dec')
     
 equal.addEventListener('click', equals);
-
+clear.addEventListener('click', clearButton);
+del.addEventListener('click', backspace);
+dec.addEventListener('click', decimals);
+window.addEventListener('keydown', keyboard);
 numbers.forEach((num) => num.addEventListener('click', () => displayNum(num.id)));
 
 operations.forEach((oper) => oper.addEventListener('click', () => displayOper(oper.id)));
 
-/*for(let i = 0; i < num.length; i++){
-    num[i].addEventListener('click', function(){
-        temp += this.id;
-        display.textContent = temp;
-    });
-};
-for(let i = 0; i < oper.length; i++){
-    oper[i].addEventListener('click', function(){
-        a = temp;
-        operator = this.id;
-        display.textContent = operator;
-            
-        for(let j = 0; j < num.length; j++){
-            num[j].addEventListener('click', function(){
-                b += this.id;
-                display.textContent = b;
-            });
-        };
-    });
-};*/
 function displayNum(num) {
     if(resetNext){display.textContent = '';}
     resetNext = false;
@@ -54,13 +38,9 @@ function equals(){
     a = +a;
     b = +b;
 
-    display.textContent = operate(a, b, operator);
-    /*previousResult = operate(a, b, operator)
-    display.textContent = previousResult;
-    temp = previousResult;
-    a = '';
-    b = '';
-    operator = '';*/
+    let result = operate(a, b, operator);
+    result = Math.round(result * 100) / 100;
+    display.textContent = result;
 }
 
 function operate(a, b, oper){
@@ -72,4 +52,27 @@ function operate(a, b, oper){
 
 function resetDisplay(){
     display.textContent = '';
+}
+
+function clearButton(){
+    a = '';
+    b = '';
+    operator = '';
+    display.textContent = '';
+}
+
+function backspace(){
+    display.textContent = display.textContent.slice(0,-1);
+}
+
+function decimals(){
+    display.textContent += '.';
+}
+
+function keyboard(e){
+    if(e.key >= 0 && e.key <= 9){ displayNum(e.key); }
+    if(e.key == ".") { decimals(); }
+    if(e.key == "/" || e.key == "*" || e.key == "+" || e.key == "-") { displayOper(e.key) }
+    if(e.key == "Enter") { equals() }
+    if(e.key == "Backspace") { backspace() }
 }
