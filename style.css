@@ -2,6 +2,7 @@ body{
     display: flex;
     justify-content: center;
     margin: 100px;
+    font-family: Impact, fantasy;
 }
 .border{
     border: 10px solid black;
@@ -68,9 +69,8 @@ body{
     font-size: 24px;
     font-weight: bold;
 }
-
 .clear{
-    background-color: aqua;
+    background-color:grey;
 }
 
 .delete{
@@ -78,4 +78,10 @@ body{
 }
 .results{
     color: white;
+}
+
+.num:hover, .oper:hover, .dec:hover, .equal:hover, .clear:hover, .delete:hover{
+    transform: scale(1.05);
+    border-color: yellow;
+    box-shadow: 0 0 1rem yellow;
 }

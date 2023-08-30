@@ -16,6 +16,7 @@ clear.addEventListener('click', clearButton);
 del.addEventListener('click', backspace);
 dec.addEventListener('click', decimals);
 window.addEventListener('keydown', keyboard);
+
 numbers.forEach((num) => num.addEventListener('click', () => displayNum(num.id)));
 
 operations.forEach((oper) => oper.addEventListener('click', () => displayOper(oper.id)));
