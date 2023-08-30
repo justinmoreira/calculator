@@ -31,7 +31,7 @@ body{
     margin: 10px 20px;
     gap: 10px;
 }
-.butStyle{
+.num, .oper, .dec, .equal{
     border: 5px solid black;
     border-radius: 10px;
     
@@ -47,7 +47,7 @@ body{
     justify-content: center;
     align-items: center;
 }
-.clearBut, .deleteBut{
+.clear, .delete{
     border: 5px solid black;
     border-radius: 10px;
 
@@ -62,10 +62,13 @@ body{
     font-weight: bold;
 }
 
-.clearBut{
+.clear{
     background-color: aqua;
 }
 
-.deleteBut{
+.delete{
     background-color: red;
+}
+.results{
+    color: white;
 }
